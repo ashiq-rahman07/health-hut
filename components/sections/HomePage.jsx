@@ -1,18 +1,101 @@
-import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight, Calendar, CheckCircle, Play, Search, Star, TrendingUp, Zap} from "lucide-react";
+
+import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-// import Pricing from "@/components/pricing";
-import { creditBenefits, features, testimonials } from "@/lib/data";
-import { Avatar } from "@radix-ui/react-avatar";
-import { AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { 
+  Search, 
+  Calendar, 
+  Shield, 
+  Clock, 
+  Users, 
+  Heart,
+  Brain,
+  Bone,
+  Eye,
+  Baby,
+  Stethoscope,
+  Star,
+  ArrowRight,
+  CheckCircle,
+  Phone,
+  Mail,
+  MapPin,
+  Award,
+  Activity,
+  Zap,
+  Play,
+  TrendingUp
+} from "lucide-react";
 
-export default function Home() {
+const HomePage = () => {
+  const specialties = [
+    { name: "Cardiology", icon: Heart, count: "25+ Doctors", color: "text-red-400" },
+    { name: "Neurology", icon: Brain, count: "18+ Doctors", color: "text-purple-400" },
+    { name: "Orthopedics", icon: Bone, count: "22+ Doctors", color: "text-blue-400" },
+    { name: "Ophthalmology", icon: Eye, count: "15+ Doctors", color: "text-green-400" },
+    { name: "Pediatrics", icon: Baby, count: "20+ Doctors", color: "text-pink-400" },
+    { name: "General", icon: Stethoscope, count: "30+ Doctors", color: "text-cyan-400" },
+  ];
+
+  const features = [
+    {
+      icon: Search,
+      title: "Find Specialists",
+      description: "Search through our extensive network of qualified medical professionals"
+    },
+    {
+      icon: Calendar,
+      title: "Easy Booking",
+      description: "Schedule appointments with just a few clicks, available 24/7"
+    },
+    {
+      icon: Shield,
+      title: "Secure & Private",
+      description: "Your medical data is protected with enterprise-grade security"
+    },
+    {
+      icon: Clock,
+      title: "Quick Consultations",
+      description: "Get expert medical advice through video calls or in-person visits"
+    }
+  ];
+
+  const testimonials = [
+    {
+      name: "Sarah Johnson",
+      role: "Patient",
+      image: "/placeholder.svg",
+      rating: 5,
+      text: "Amazing platform! Found the perfect cardiologist and booking was seamless."
+    },
+    {
+      name: "Michael Chen",
+      role: "Patient", 
+      image: "/placeholder.svg",
+      rating: 5,
+      text: "The doctors here are top-notch. Highly recommend for anyone seeking quality healthcare."
+    },
+    {
+      name: "Emily Rodriguez",
+      role: "Patient",
+      image: "/placeholder.svg", 
+      rating: 5,
+      text: "Fast, reliable, and professional. This platform revolutionized my healthcare experience."
+    }
+  ];
+
+  const stats = [
+    { number: "500+", label: "Expert Doctors", icon: Users },
+    { number: "50K+", label: "Happy Patients", icon: Heart },
+    { number: "24/7", label: "Support Available", icon: Clock },
+    { number: "98%", label: "Success Rate", icon: Award }
+  ];
+
   return (
-     <div className="">
-
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
+      <Navbar />
       
       {/* Enhanced Hero Section */}
       <section className="relative py-16 lg:py-24 overflow-hidden">
@@ -82,12 +165,10 @@ export default function Home() {
               <div className="relative">
                 {/* Main Image Container */}
                 <div className="relative bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-3xl p-8 backdrop-blur-sm border border-slate-700/50">
-                  <Image
+                  <img 
                     src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&h=400&fit=crop&crop=center" 
                     alt="Modern Healthcare" 
                     className="w-full h-80 object-cover rounded-2xl shadow-2xl"
-                    width={600}
-                    height={400}
                   />
                   
                   {/* Floating Cards */}
@@ -234,7 +315,7 @@ export default function Home() {
                       <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
                     ))}
                   </div>
-                  <p className="text-slate-300 mb-6 leading-relaxed">{testimonial.text}</p>
+                  <p className="text-slate-300 mb-6 leading-relaxed">"{testimonial.text}"</p>
                   <div className="flex items-center space-x-3">
                     <Avatar className="w-12 h-12">
                       <AvatarImage src={testimonial.image} alt={testimonial.name} />
@@ -270,14 +351,14 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" className="group bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white px-8 py-4 text-lg shadow-lg hover:shadow-xl transition-all">
-              <Link href="/doctors">
+              <Link to="/doctors">
                 <Calendar className="mr-2 h-5 w-5" />
                 Book Your Appointment
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="border-slate-600 text-slate-300 hover:bg-slate-800/50 px-8 py-4 text-lg backdrop-blur-sm">
-              <Link href="/signup">
+              <Link to="/signup">
                 Join Our Community
               </Link>
             </Button>
@@ -286,7 +367,58 @@ export default function Home() {
       </section>
 
       {/* Enhanced Footer */}
-   
+      <footer className="bg-slate-950/80 backdrop-blur-sm py-16 border-t border-slate-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-4 gap-8">
+            <div className="col-span-2">
+              <h3 className="text-2xl font-bold text-white mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">MediCare+</h3>
+              <p className="text-slate-400 mb-6 leading-relaxed max-w-md">
+                Revolutionizing healthcare accessibility with cutting-edge technology 
+                and compassionate care. Your health, our commitment.
+              </p>
+              <div className="flex flex-col space-y-3">
+                <div className="flex items-center space-x-3 text-slate-400 hover:text-white transition-colors">
+                  <Phone className="w-4 h-4" />
+                  <span>+1 (555) 123-4567</span>
+                </div>
+                <div className="flex items-center space-x-3 text-slate-400 hover:text-white transition-colors">
+                  <Mail className="w-4 h-4" />
+                  <span>hello@medicare.com</span>
+                </div>
+                <div className="flex items-center space-x-3 text-slate-400 hover:text-white transition-colors">
+                  <MapPin className="w-4 h-4" />
+                  <span>Healthcare District, Medical City</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h4 className="text-lg font-semibold text-white mb-4">Quick Access</h4>
+              <ul className="space-y-3">
+                <li><Link to="/doctors" className="text-slate-400 hover:text-blue-400 transition-colors">Find Doctors</Link></li>
+                <li><Link to="/specialties" className="text-slate-400 hover:text-blue-400 transition-colors">Specialties</Link></li>
+                <li><Link to="/emergency" className="text-slate-400 hover:text-blue-400 transition-colors">Emergency Care</Link></li>
+                <li><Link to="/telemedicine" className="text-slate-400 hover:text-blue-400 transition-colors">Telemedicine</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-lg font-semibold text-white mb-4">Support</h4>
+              <ul className="space-y-3">
+                <li><Link to="/help" className="text-slate-400 hover:text-blue-400 transition-colors">Help Center</Link></li>
+                <li><Link to="/contact" className="text-slate-400 hover:text-blue-400 transition-colors">Contact Us</Link></li>
+                <li><Link to="/privacy" className="text-slate-400 hover:text-blue-400 transition-colors">Privacy Policy</Link></li>
+                <li><Link to="/terms" className="text-slate-400 hover:text-blue-400 transition-colors">Terms of Service</Link></li>
+              </ul>
+            </div>
+          </div>
+          <div className="border-t border-slate-800 mt-12 pt-8 text-center">
+            <p className="text-slate-400">
+              © 2024 MediCare+. All rights reserved. Transforming healthcare, one patient at a time.
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
-}
+};
+
+export default HomePage;
