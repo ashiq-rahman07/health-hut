@@ -63,7 +63,7 @@ const Navbar = () => {
                 href={item.href}
                 className={cn(
                   "px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center space-x-2 group",
-                  isActive(item.href)
+                  isActive(item?.href)
                     ? "bg-gradient-to-r from-blue-600/20 to-purple-600/20 text-blue-300 border border-blue-500/30"
                     : "text-slate-300 hover:text-white hover:bg-slate-800/50"
                 )}

@@ -8,17 +8,17 @@ import {
   User,
 } from "lucide-react";
 import Link from "next/link";
-// import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
-// import { checkUser } from "@/lib/checkUser";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import { checkUser } from "@/lib/checkUser";
 import { Badge } from "./ui/badge";
-// import { checkAndAllocateCredits } from "@/actions/credits";
+import { checkAndAllocateCredits } from "@/actions/credits";
 import Image from "next/image";
 
 export default async function Header() {
-//   const user = await checkUser();
-//   if (user?.role === "PATIENT") {
-//     await checkAndAllocateCredits(user);
-//   }
+  const user = await checkUser();
+  if (user?.role === "PATIENT") {
+    await checkAndAllocateCredits(user);
+  }
 
   return (
     <header className="fixed top-0 w-full border-b bg-background/80 backdrop-blur-md z-10 supports-[backdrop-filter]:bg-background/60">

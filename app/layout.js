@@ -1,9 +1,11 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
+import { ClerkProvider } from "@clerk/nextjs";
+import { Toaster } from "sonner";
 import Header from "@/components/header";
-import Navbar from "@/components/sections/Navbar";
-import Footer from "@/components/sections/Footer";
+import { dark } from "@clerk/themes";
+import { ThemeProvider } from "@/components/theme-provider";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -13,8 +15,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-  
-       <html lang="en" suppressHydrationWarning>
+    <ClerkProvider
+      appearance={{
+        baseTheme: dark,
+      }}
+    >
+      <html lang="en" suppressHydrationWarning>
         <head>
           <link rel="icon" href="/logo.png" sizes="any" />
         </head>
@@ -25,14 +31,18 @@ export default function RootLayout({ children }) {
             enableSystem
             disableTransitionOnChange
           >
-           <Navbar/>
-            <main className=" min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">{children}</main>
-            
-<Footer/>
-           
+            <Header />
+            <main className="min-h-screen">{children}</main>
+            <Toaster richColors />
+
+            <footer className="bg-muted/50 py-12">
+              <div className="container mx-auto px-4 text-center text-gray-200">
+                <p>Made with 💗 by RoadsideCoder</p>
+              </div>
+            </footer>
           </ThemeProvider>
         </body>
       </html>
-   
+    </ClerkProvider>
   );
 }
