@@ -23,10 +23,11 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { setUserRole } from "@/actions/onboarding";
-import { doctorFormSchema } from "@/lib/schema";
-import { SPECIALTIES } from "@/lib/specialities";
+
 import useFetch from "@/hooks/use-fetch";
 import { useEffect } from "react";
+import { doctorFormSchema } from "@/lib/schema";
+import { SPECIALTIES } from "@/lib/specialities";
 
 export default function OnboardingPage() {
   const [step, setStep] = useState("choose-role");
